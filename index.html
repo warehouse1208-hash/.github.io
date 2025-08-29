@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全商英語検定 重要単語復習ツール</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; text-align: center; background-color: #f5f7fa; color: #333; margin: 0; padding: 0; }
+        .header { background: linear-gradient(135deg, #4A90E2, #50C878); color: white; padding: 25px 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 26px; font-weight: 600; }
+        .header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
+        .main-container { max-width: 500px; margin: 50px auto; padding: 40px; background-color: white; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+        h2 { color: #333; font-weight: 600; }
+        form { margin-top: 30px; }
+        .form-group legend { font-size: 20px; font-weight: 500; color: #555; margin-bottom: 20px; }
+        .radio-group { display: flex; flex-direction: column; gap: 15px; }
+        .radio-group label { display: block; padding: 20px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: 18px; font-weight: 500; }
+        .radio-group input[type="radio"] { display: none; }
+        .radio-group input[type="radio"]:checked + span { color: #4A90E2; font-weight: 700; }
+        .radio-group label { background-color: #fff; }
+        .radio-group label:hover { border-color: #4A90E2; background-color: #f7faff; }
+        .radio-group input[type="radio"]:checked + span::before { content: '✔ '; }
+        .btn { background: linear-gradient(135deg, #50C878, #4A90E2); color: white; width: 100%; padding: 18px 30px; font-size: 20px; font-weight: 600; cursor: pointer; border: none; border-radius: 8px; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-top: 30px;}
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.25); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>KOKOKU HIGH SCHOOL</h1>
+        <p>ITビジネス科</p>
+    </div>
+    <div class="main-container">
+        <h2>全商英語検定 単語復習ツール</h2>
+        <form id="config-form">
+            <div class="form-group">
+                <legend>学習する級を選択してください</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="level" value="3" checked><span>3級</span></label>
+                    <label><input type="radio" name="level" value="2"><span>2級</span></label>
+                    <label><input type="radio" name="level" value="1"><span>1級</span></label>
+                </div>
+            </div>
+            <button type="submit" class="btn">クイズ開始</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('config-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedLevel = document.querySelector('input[name="level"]:checked').value;
+            localStorage.setItem('selectedLevel', selectedLevel);
+            window.location.href = 'quiz.html';
+        });
+    </script>
+</body>
+</html>
