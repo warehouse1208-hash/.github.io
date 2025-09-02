@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>単語クイズ</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { font-family: 'Helvetica Neue', Arial, sans-serif; text-align: center; background-color: #f4f4f9; color: #333; margin: 0; padding: 20px; }
         #quiz-container { max-width: 600px; margin: auto; padding: 30px; background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
@@ -26,6 +26,7 @@
         .action-btn { background: linear-gradient(135deg, #50C878, #4A90E2); color: white; padding: 12px 30px; font-size: 18px; cursor: pointer; border: none; border-radius: 25px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         .action-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
         a.action-btn { text-decoration: none; display: inline-block; }
+        #chart-container { margin-top: 30px; }
     </style>
 </head>
 <body>
@@ -36,7 +37,13 @@
         <div id="options"></div>
         <div id="feedback"></div>
         <button id="next-btn" style="display:none;" class="action-btn">次の問題へ</button>
-        <a href="index.html" id="back-btn" style="display:none;" class="action-btn">トップに戻る</a>
+        <div id="result-actions" style="display:none;">
+            <a href="index.html" class="action-btn">トップに戻る</a>
+            <button id="show-progress-btn" class="action-btn">進捗をグラフで見る</button>
+        </div>
+        <div id="chart-container">
+            <canvas id="progressChart"></canvas>
+        </div>
     </div>
     <script src="quiz_data.js"></script>
     <script src="quiz.js"></script>
